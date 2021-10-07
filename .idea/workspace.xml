@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="495d3bbc-0515-43a5-8458-430a19469a6d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutonomousRed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Driverr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/FieldCentric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Webcam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/hello.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,17 +15,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="hiddenUrls">
-      <set>
-        <option value="https://github.com/GerstenJoch/PrettSmartRoboticsRobotCode" />
-      </set>
-    </option>
-  </component>
   <component name="ProjectId" id="1z3QZtW1VFIOveSPxAo6o7nzLv3" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -125,14 +111,7 @@
       <option name="project" value="LOCAL" />
       <updated>1633540486147</updated>
     </task>
-    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/main'">
-      <created>1633537853318</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1633537853318</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
