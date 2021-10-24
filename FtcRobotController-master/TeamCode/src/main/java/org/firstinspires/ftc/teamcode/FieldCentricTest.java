@@ -84,11 +84,11 @@ public class FieldCentricTest extends OpMode {
     double intakePower;
     double intakeArmPower;
     double theta;
-
+    int position;
     String intakeTelemetry;
     String intakeArmTelemetry;
     String carousselTelemetry;
-    
+
     // The IMU sensor object
     BNO055IMU imu;
     // State used for updating telemetry
@@ -104,12 +104,13 @@ public class FieldCentricTest extends OpMode {
         frontright = hardwareMap.get(DcMotor.class, "frontright");
         //imu_1 = hardwareMap.get(Gyroscope.class, "imu 1");
         //imu = hardwareMap.get(Gyroscope.class, "imu");
-        caroussel = hardwareMap.get(DcMotor.class, "duck");
-        intake = hardwareMap.get(DcMotor.class, "intake");
+        caroussel = hardwareMap.get(DcMotor.class, "caroussel");
+        //intake = hardwareMap.get(DcMotor.class, "intake");
         intakeArm = hardwareMap.get(DcMotor.class, "intakeArm");
         backleft = hardwareMap.get(DcMotor.class, "rearleft");
         backright = hardwareMap.get(DcMotor.class, "rearright");
-        
+        position = intakeArm.getCurrentPosition();
+
         // Set up the parameters with which we will use our IMU. Note that integration
         // algorithm here just reports accelerations to the logcat log; it doesn't actually
         // provide positional information.
@@ -128,8 +129,8 @@ public class FieldCentricTest extends OpMode {
 
         telemetry.addData("IMU calibration ", "IN PROGRESS...");
         telemetry.update();
-        
-        
+
+
 
     }
 
@@ -145,7 +146,7 @@ public class FieldCentricTest extends OpMode {
      */
     @Override
     public void start() {
-                
+
     }
 
     /*
@@ -157,7 +158,7 @@ public class FieldCentricTest extends OpMode {
         //powerFL = (gamepad1.left_stick_y - gamepad1.left_stick_x) - gamepad1.right_stick_x;
         //powerBR = ((-gamepad1.left_stick_y) + gamepad1.left_stick_x) - gamepad1.right_stick_x;
         //powerFR = ((-gamepad1.left_stick_y) - gamepad1.left_stick_x) - gamepad1.right_stick_x;
-        
+
         //Driving Mechanism
         theta = getCurrentHeading()+(3.1415/2);
         FWD = (gamepad1.left_stick_x*Math.sin(theta) + gamepad1.left_stick_y*Math.cos(theta));
@@ -167,59 +168,65 @@ public class FieldCentricTest extends OpMode {
         speed = -1;
         frontleft.setPower((FWD+STR+ROT)*speed);
         frontright.setPower((FWD-STR+ROT)*speed);
-        backleft.setPower((-1*FWD+STR+ROT)*speed);
-        backright.setPower((-1*FWD-STR+ROT)*speed);
+        backleft.setPower((-1*FWD-STR+ROT)*speed);
+        backright.setPower((-1*FWD+STR+ROT)*speed);
+
+        //Caroussel Mechanism
+        if (gamepad2.a){
+            carousselPower = 0.3;
+            caroussel.setPower(carousselPower);
+        }else{
+            carousselPower = 0;
+            caroussel.setPower(carousselPower);
+        }
+        //IntakeArm Mechanism
+        if (gamepad2.dpad_down){
+            position = 45;
+            intakeArm.setRunMode(DcMotor.RunMode.PositionControl);
+        }if (gamepad2.dpad_left){
+            position = 90;
+            intakeArm.setRunMode(DcMotor.RunMode.PositionControl);
+        }if (gamepad2.dpad_right){
+            position = 135;
+            intakeArm.setRunMode(DcMotor.RunMode.PositionControl);
+        }if (gamepad2.dpad_up){
+            position = 180;
+            intakeArm.setRunMode(DcMotor.RunMode.PositionControl);
+        }
+
         
-        
+            
+        /*Intake Mechanism
+        if (gamepad2.b && intakePower==0){
+            intakePower = 0.1;
+            intake.setPower(intakePower);
+        }if (gamepad2.b && intakePower !=0){
+            intakePower = 0;
+            intake.setPower(intakePower);
+        }*/
+
+        //Adding data to screen
+        if (carousselPower == 0){
+            carousselTelemetry = "isNotRunning";
+        }else {
+            carousselTelemetry = "isRunning";
+        } if (intakeArmPower == 0){
+            intakeArmTelemetry = "isNotRunning";
+        }else {
+            intakeArmTelemetry = "isRunning";
+        } /*if (intakePower == 0){
+            intakeTelemetry = "isNotRunning";
+        }else {
+            intakeTelemetry = "isRunning";}*/
+
         telemetry.addData("FWD ", FWD);
         telemetry.addData("STR ", STR);
         telemetry.addData("ROT ", ROT);
-        
-       // telemetry.addData("Heading ", Math.(theta));
+        telemetry.addData("Caroussel ", carousselTelemetry);
+        //telemetry.addData("Intake", intakeTelemetry);
+        telemetry.addData("IntakeArmPosition", position);
+
         telemetry.update();
-
-       //Caroussel Mechanism
-       if (gamepad2.a && carousselPower==0){
-           carousselPower = 0.3;
-           caroussel.setPower(carousselPower);
-       }if (gamepad2.a && carousselPower!=0){
-           carousselPower = 0;
-           caroussel.setPower(carousselPower);
-       }
-       //IntakeArm Mechanism
-       if (gamepad2.y){
-           intakeArmPower = -0.2;
-           intakeArm.setPower(intakeArmPower);
-       }else{
-           intakeArmPower = 0;
-           intakeArm.setPower(intakeArmPower);
-       }
-       //Intake Mechanism
-       if (gamepad2.b && intakePower==0){
-           intakePower = 0.1;
-           intake.setPower(intakePower);
-       }if (gamepad2.b && intakePower !=0){
-           intakePower = 0;
-           intake.setPower(intakePower);
-       }
-       //addData to screen if Mechanisms are running or not
-       if (carousselPower == 0){
-           carousselTelemetry = Color.green+"isRunning";
-       }else {
-           carousselTelemetry = Color.red+"isNotRunning";
-       } if (intakeArmPower == 0){
-        intakeArmTelemetry = Color.green+"isRunning";
-    }else {
-        intakeArmTelemetry = Color.red+"isNotRunning";
-    } if (intakePower == 0){
-        intakeTelemetry = Color.green+"isRunning";
-    }else {
-        intakeTelemetry = Color.red+"isNotRunning";
-    }
-       telemetry.addData("Caroussel ", carousselTelemetry);
-       telemetry.addData("Intake", intakeTelemetry);
-       telemetry.addData("IntakeArm", intakeArmTelemetry);
-
     }
 
 
@@ -230,7 +237,7 @@ public class FieldCentricTest extends OpMode {
     public void stop() {
 
     }
-    
+
     private double getCurrentHeading(){
         angles   = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
         return (angles.firstAngle);
