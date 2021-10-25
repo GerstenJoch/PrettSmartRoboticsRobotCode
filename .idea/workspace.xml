@@ -5,22 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="495d3bbc-0515-43a5-8458-430a19469a6d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Explenation.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutonomousRed01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Driver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/FieldCentricTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/WebcamTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Webcam.java" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Webcam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Explenation.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Test.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Concept" />
+        <option value="Specification" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1z3QZtW1VFIOveSPxAo6o7nzLv3" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -28,6 +38,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ObjectiveC&#10;JAVA" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
@@ -115,7 +128,21 @@
       <option name="project" value="LOCAL" />
       <updated>1633540486147</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/main'">
+      <created>1633542106898</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1633542106898</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Test">
+      <created>1633625293954</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1633625293954</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -133,7 +160,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Delete PrettySmartRoboticsTest directory" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
-    <MESSAGE value="Help" />
-    <option name="LAST_COMMIT_MESSAGE" value="Help" />
+    <MESSAGE value="Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test" />
   </component>
 </project>
