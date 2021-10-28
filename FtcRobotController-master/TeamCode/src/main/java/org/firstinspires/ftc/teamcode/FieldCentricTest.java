@@ -67,6 +67,7 @@ public class FieldCentricTest extends OpMode {
     private Blinker control_Hub__2_;
     private Blinker expansion_Hub__7_;
     private DcMotor frontleft;
+    private HardWarePushBot robot = new HardWarePushBot();
     private DcMotor frontright;
     //private Gyroscope imu_1;
     //private Gyroscope imu;
@@ -74,7 +75,6 @@ public class FieldCentricTest extends OpMode {
     private DcMotor backright;
     private DcMotor intake;
     private DcMotor intakeArm;
-    public static final DcMotor.ZeroPowerBehavior BRAKE;
     private DcMotor caroussel;
     double powerFL;
     double powerFR;
@@ -113,7 +113,6 @@ public class FieldCentricTest extends OpMode {
         intakeArm = hardwareMap.get(DcMotor.class, "intakeArm");
         backleft = hardwareMap.get(DcMotor.class, "rearleft");
         backright = hardwareMap.get(DcMotor.class, "rearright");
-        position = intakeArm.getCurrentPosition();
 
         // Set up the parameters with which we will use our IMU. Note that integration
         // algorithm here just reports accelerations to the logcat log; it doesn't actually
@@ -174,7 +173,6 @@ public class FieldCentricTest extends OpMode {
         frontright.setPower((FWD-STR+ROT)*speed);
         backleft.setPower((-1*FWD-STR+ROT)*speed);
         backright.setPower((-1*FWD+STR+ROT)*speed);
-
         //Caroussel Mechanism
         if (gamepad2.a){
             carousselPower = 0.3;
@@ -183,27 +181,17 @@ public class FieldCentricTest extends OpMode {
             carousselPower = 0;
             caroussel.setPower(carousselPower);
         }
+        position = intakeArm.getCurrentPosition();
+        //Distance Sensor for the arm
+
         //IntakeArm Mechanism
         if (gamepad2.dpad_down){
-            position = 45;
-            intakeArm.setZeroPowerBehavior(ZeroPowerBehavior.BRAKE);
-            intakeArm.setPowerFloat();
-            intakeArm.setPower(0.0);
         }if (gamepad2.dpad_left){
-            position = 90;
-            intakeArm.setZeroPowerBehavior(ZeroPowerBehavior.BRAKE);
-            intakeArm.setPowerFloat();
-            intakeArm.setPower(0.0);
+            intakeArm.setPower(-0.3);
         }if (gamepad2.dpad_right){
-            position = 135;
-            intakeArm.setZeroPowerBehavior(ZeroPowerBehavior.BRAKE);
-            intakeArm.setPowerFloat();
-            intakeArm.setPower(0.0);
+            intakeArm.setPower(0.3)
         }if (gamepad2.dpad_up){
-            position = 180;
-            intakeArm.setZeroPowerBehavior(ZeroPowerBehavior.BRAKE);
-            intakeArm.setPowerFloat();
-            intakeArm.setPower(0.0);
+            intakeArm.setPower(0);
         }
 
         
