@@ -19,6 +19,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.hardware.HardwareDevice;
+import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
@@ -30,7 +32,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import java.lang.Comparable.<DcMotor.ZeroPowerBehaviour>;
 import java.io.Serializable;
 import com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -67,7 +68,6 @@ public class FieldCentricTest extends OpMode {
     private Blinker control_Hub__2_;
     private Blinker expansion_Hub__7_;
     private DcMotor frontleft;
-    private HardWarePushBot robot = new HardWarePushBot();
     private DcMotor frontright;
     //private Gyroscope imu_1;
     //private Gyroscope imu;
@@ -76,6 +76,7 @@ public class FieldCentricTest extends OpMode {
     private DcMotor intake;
     private DcMotor intakeArm;
     private DcMotor caroussel;
+    private Servo servo;
     double powerFL;
     double powerFR;
     double powerBR;
@@ -106,11 +107,13 @@ public class FieldCentricTest extends OpMode {
         expansion_Hub__7_ = hardwareMap.get(Blinker.class, "Expansion Hub (7)");
         frontleft = hardwareMap.get(DcMotor.class, "frontleft");
         frontright = hardwareMap.get(DcMotor.class, "frontright");
+
         //imu_1 = hardwareMap.get(Gyroscope.class, "imu 1");
         //imu = hardwareMap.get(Gyroscope.class, "imu");
         caroussel = hardwareMap.get(DcMotor.class, "caroussel");
         //intake = hardwareMap.get(DcMotor.class, "intake");
         intakeArm = hardwareMap.get(DcMotor.class, "intakeArm");
+        servo = hardwareMap.get(Servo.class, "servo1");
         backleft = hardwareMap.get(DcMotor.class, "rearleft");
         backright = hardwareMap.get(DcMotor.class, "rearright");
 
@@ -185,12 +188,17 @@ public class FieldCentricTest extends OpMode {
         //Distance Sensor for the arm
 
         //IntakeArm Mechanism
-        if (gamepad2.dpad_down){
-        }if (gamepad2.dpad_left){
+        if (gamepad2.dpad_up){
             intakeArm.setPower(-0.3);
-        }if (gamepad2.dpad_right){
-            intakeArm.setPower(0.3)
-        }if (gamepad2.dpad_up){
+            if (position >= 90 && position <= 100){
+                intakeArm.setZeroPowerBehavior(ZeroPowerBehavior.BRAKE);
+            }            servo.setPosition(90);
+            intakeArm.setPower(0);
+        }if (gamepad2.dpad_down){
+            intakeArm.setPower(0.3);
+            if (position >= 90 && position <= 100){
+                intakeArm.setZeroPowerBehavior(ZeroPowerBehavior.BRAKE);
+            }            servo.setPosition(90);
             intakeArm.setPower(0);
         }
 
@@ -224,7 +232,7 @@ public class FieldCentricTest extends OpMode {
         telemetry.addData("ROT ", ROT);
         telemetry.addData("Caroussel ", carousselTelemetry);
         //telemetry.addData("Intake", intakeTelemetry);
-        telemetry.addData("IntakeArmPosition", position);
+        telemetry.addData("IntakeArmPosition", intakeArmTelemetry);
 
         telemetry.update();
     }
